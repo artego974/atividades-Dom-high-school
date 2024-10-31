@@ -1,0 +1,33 @@
+<!-- ### Atividade 4: Alterar Texto com Prompt
+
+Crie uma página com uma frase padrão e um botão "Mudar Texto". Ao clicar no botão, solicite ao usuário um novo texto usando `prompt` e exiba o novo texto no lugar do original.
+
+- **Dica**: Utilize `document.getElementById` para acessar o elemento do texto e `innerText` para atualizá-lo com o valor obtido. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulando DOM | Exercicio 4</title>
+</head>
+<body>
+    <h1 id="texto">FRASE ORIGINAL</h1>
+    <button id="mudarTexto">Mudar Texto</button>
+</body>
+<script>
+    const buttonMudarTexto = document.querySelector("#mudarTexto")
+
+    buttonMudarTexto.addEventListener("click", alterarTexto)
+
+
+    function alterarTexto(){
+
+        let novoTexto = prompt("Digite um novo texto para substituirmos o orignal")
+
+        let texto = document.querySelector("#texto")
+        
+        texto.innerText = novoTexto
+    }
+</script>
+</html>

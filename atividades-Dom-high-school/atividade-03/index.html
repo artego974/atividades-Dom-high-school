@@ -1,0 +1,36 @@
+<!-- ### Atividade 3: Mostrar/Ocultar Texto
+
+Crie uma página com um botão "Mostrar/Ocultar". Ao clicar no botão, uma frase escondida deve aparecer; ao clicar novamente, a frase desaparece.
+
+- **Dica**: Utilize uma variável booleana para armazenar o estado de visibilidade e altere o `innerText` do botão conforme o estado. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulando DOM | Exercicio 3</title>
+</head>
+<body>
+    <button id="revelar">Mostrar/Ocultar</button>
+    <h3 id="texto"></h3>
+</body>
+<script>
+    const buttonRevelar = document.querySelector("#revelar")
+    const campoTexto = document.querySelector("#texto")
+
+    let textoEstaAparecendo = false
+
+    buttonRevelar.addEventListener("click", modificarTexto)
+
+    function modificarTexto(){
+        if(textoEstaAparecendo == false){
+            campoTexto.innerText = "TEXTO MISTERIOSO..."
+            textoEstaAparecendo = true
+        } else {
+            campoTexto.innerText = ''
+            textoEstaAparecendo = false
+        }
+    }
+</script>
+</html>

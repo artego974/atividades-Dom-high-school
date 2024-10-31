@@ -1,0 +1,27 @@
+<!-- ### Atividade 5: Mudança de Texto ao Pressionar Tecla
+
+Crie uma página com uma mensagem padrão, como "Pressione uma tecla...". Toda vez que uma tecla for pressionada, a mensagem deve ser alterada para "Você pressionou: [tecla]". Exiba o nome da tecla pressionada.
+
+- **Dica**: Trabalhar com o evento de teclado `keydown` para identificar a tecla pressionada e atualizar o DOM.
+- **Dica**: Use o `event.key` para obter o nome da tecla pressionada e `innerText` para atualizar o conteúdo da mensagem. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulando DOM | Exercicio 5</title>
+</head>
+<body>
+    <h1 id="texto">Pressione uma tecla...</h1>
+</body>
+<script>
+    const texto = document.querySelector("#texto")
+
+    document.addEventListener("keydown", (event)=>{
+        texto.innerText = `Você pressionou: [${event.key}]`
+    })
+
+</script>
+</html>

@@ -1,0 +1,116 @@
+<!-- ### Atividade 6: Eleições Municipais
+
+Crie uma página com um botão “Votar”. Ao clicar deve abrir um prompt e receber o número do candidato. Ao receber, exiba a foto do candidato e o nome dele, bem como a pergunta “Confirmar?”. 
+
+Escolha uma cidade do Brasil para escolher os candidatos possíveis. Caso receba um candidato inválido, exiba o voto nulo.
+
+- **Dica**: Use o evento de `click`para disparar o prompt.
+- Desafio: Tente exibir a quantidade de votos para cada candidato no console. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulando DOM | Exercicio 6</title>
+</head>
+<style>
+    button{
+        width: 10rem;
+        height: 2rem;
+    }
+    img {
+        width: 20rem;
+        height: 20rem;
+        display: none;
+        margin: 2rem 0;
+    }
+</style>
+<body>
+    <button id="votar">Votar</button>
+    <br>
+    <img src="" alt="foto candidato" id="imagemCandidato">
+    <h2 id="nomeCandidato"></h2>
+    <div id="contagemVotos"></div>
+</body>
+<script>
+    const btnVotar = document.querySelector("#votar");
+    const contagemVotos = document.querySelector("#contagemVotos");
+
+    const votos = {
+        15: 0,
+        22: 0,
+        20: 0,
+        50: 0,
+        13: 0,
+        nulo: 0
+    };
+
+    btnVotar.addEventListener("click", () => {
+        let votarPrompt = prompt("DIGITE O NÚMERO DO SEU CANDIDATO:\n\nARTHUR SCHMIDT - MDB 15\nDELEGADO HELIOMAR- PL 22\nHITLER PEDERSSETTI - PODE 20\nMANOEL BANDEIRA - PSOL 50\nNELSON SPOLAOR - PT 13");
+        adicionarFoto(parseInt(votarPrompt));
+    });
+
+    function adicionarFoto(numero) {
+        let imagemCandidato = document.querySelector("#imagemCandidato");
+        imagemCandidato.style.display = 'block'
+        let nomeCandidato = document.querySelector("#nomeCandidato");
+        let candidatoValido = true;
+
+        switch (numero) {
+            case 15:
+                imagemCandidato.setAttribute('src', 'https://s3-sa-east-1.amazonaws.com/static.camarasaoleopoldo.rs.gov.br/resized-uploads/600/1417.jpg');
+                nomeCandidato.innerText = "Arthur Schmidt - MDB 15";
+                votos[15]++;
+                break;
+            case 22:
+                imagemCandidato.setAttribute('src', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU1MhyE5sIuwu6pgZ5CHBeTnHAaiDdafx9xg&s');
+                nomeCandidato.innerText = "Delegado Heliomar - PL 22";
+                votos[22]++;
+                break;
+            case 20:
+                imagemCandidato.setAttribute('src', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjr7ZSbgcw2xUq5ykOntFU7A0k4agFiEYMyA&s');
+                nomeCandidato.innerText = "Hitler Pederssetti - PODE 20";
+                votos[20]++;
+                break;
+            case 50:
+                imagemCandidato.setAttribute('src', 'https://d99xxpiicwteh.cloudfront.net/data-profile/img/2024/oficial/210002288637.jpeg');
+                nomeCandidato.innerText = "Manoel Bandeira - PSOL 50";
+                votos[50]++;
+                break;
+            case 13:
+                imagemCandidato.setAttribute('src', 'https://valedosinos.org/wp-content/uploads/2024/08/Nelson-Spolaor-candidato-prefeitura-sao-leopoldo-foto-reproducao-redes-sociais.jpg');
+                nomeCandidato.innerText = "Nelson Spolaor - PT 13";
+                votos[13]++;
+                break;
+            default:
+                imagemCandidato.setAttribute('src', '');
+                nomeCandidato.innerText = "Voto Nulo";
+                votos['nulo']++;
+                candidatoValido = false;
+                break;
+        }
+
+        if (candidatoValido) {
+            if (confirm(`Confirmar voto para ${nomeCandidato.innerText} ?`)) {
+            } else {
+                votos[numero]--; 
+            }
+        }
+        
+        atualizarContagem();
+    }
+    function atualizarContagem() {
+        contagemVotos.innerHTML = `
+            <h3>Contagem de Votos</h3>
+            <p>Arthur Schmidt - MDB 15: ${votos[15]} votos</p>
+            <p>Delegado Heliomar - PL 22: ${votos[22]} votos</p>
+            <p>Hitler Pederssetti - PODE 20: ${votos[20]} votos</p>
+            <p>Manoel Bandeira - PSOL 50: ${votos[50]} votos</p>
+            <p>Nelson Spolaor - PT 13: ${votos[13]} votos</p>
+            <p>Votos Nulos: ${votos.nulo} votos</p>
+        `;
+    }
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!-- Atividade 1: Alterar Cor ao Clicar
+
+Crie uma página com três quadrados coloridos. Ao clicar em um quadrado, ele deve mudar para uma cor diferente, que pode ser definida como fixa. O clique alterna entre duas cores predefinidas para cada quadrado. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 1</title>
+</head>
+<style>
+    .quadrado{
+        width: 7rem;
+        height: 7rem;
+        display: block;
+    }
+    .quadrado:nth-child(1){
+        background-color: red;
+    }
+    .quadrado:nth-child(2){
+        background-color: green;
+    }
+    .quadrado:nth-child(3){
+        background-color: blue;
+    }
+</style>
+<body>
+    <div class="quadrado">quadrado1</div>
+    <div class="quadrado">quadrado2</div>
+    <div class="quadrado">quadrado3</div>
+</body>
+<script>
+    const quadrados = document.getElementsByClassName('quadrado')
+
+    quadrados[0].addEventListener("click", ()=>{
+        quadrados[0].style.backgroundColor == 'red' ? quadrados[0].style.backgroundColor = 'black' : quadrados[0].style.backgroundColor = 'red'
+    })
+
+    quadrados[1].addEventListener("click", ()=>{
+        quadrados[1].style.backgroundColor == 'green' ? quadrados[1].style.backgroundColor = 'gray' : quadrados[1].style.backgroundColor = 'green'
+    })
+
+    quadrados[2].addEventListener("click", ()=>{
+        quadrados[2].style.backgroundColor == 'blue' ? quadrados[2].style.backgroundColor = 'purple' : quadrados[2].style.backgroundColor = 'blue'
+    })
+</script>
+</html>

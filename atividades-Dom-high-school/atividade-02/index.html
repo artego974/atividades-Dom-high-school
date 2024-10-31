@@ -1,0 +1,37 @@
+<!-- ### Atividade 2: Contador de Cliques
+
+Crie uma página com um botão "Contar Cliques". Cada vez que o botão for clicado, um contador deve ser incrementado e exibido na tela. Inclua também um botão "Resetar" que redefine o contador para zero. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulando DOM | Exercicio 2</title>
+</head>
+<body>
+    <button id="contar">Contar Cliques</button>
+    <button id="resetar">Resetar</button>
+    <h1>Contagem Atual: </h1>
+    <p id="contador">0</p>
+</body>
+<script>
+    const buttonContar = document.querySelector("#contar")
+    const buttonResetar = document.querySelector("#resetar")
+
+    const textoContador = document.querySelector("#contador")
+
+    let contagemAtual = 0
+
+    buttonContar.addEventListener("click", acrescentarContagem)
+    buttonResetar.addEventListener("click", resetarContagem)
+
+    function acrescentarContagem(){
+        contagemAtual = contagemAtual + 1
+        textoContador.innerText = contagemAtual
+    }
+    function resetarContagem(){
+        contagemAtual = 0
+        textoContador.innerText = contagemAtual
+    }
+</script>
+</html>
